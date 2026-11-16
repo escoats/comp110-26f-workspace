@@ -20,11 +20,8 @@ build-backend = "uv_build"
 module-name = ["chat110", "decoders"]
 
 [tool.uv]
-environments = [
-    "sys_platform == 'darwin' and platform_machine == 'arm64'",
-    "sys_platform == 'win32' and platform_machine == 'AMD64'",
-    "sys_platform == 'linux' and platform_machine == 'x86_64'",
-]
+# PyTorch has no source distribution, so guarantee wheels for the course's
+# primary platforms while allowing uv to resolve universally by default.
 required-environments = [
     "sys_platform == 'darwin' and platform_machine == 'arm64'",
     "sys_platform == 'win32' and platform_machine == 'AMD64'",
